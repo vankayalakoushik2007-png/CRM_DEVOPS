@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClientFlow CRM</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/">
+      <span class="brand-icon">C</span>
+      <span>ClientFlow<small>CRM WORKSPACE</small></span>
+    </a>
+    <p class="nav-label">WORKSPACE</p>
+    <a class="nav-link active" href="#dashboard">▦ &nbsp; Dashboard</a>
+    <a class="nav-link" href="#customers" id="customersNav">♙ &nbsp; Customers</a>
+    <div class="sidebar-bottom">
+      <span class="status-dot"></span> API connection
+      <strong id="apiStatus">Connecting...</strong>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar" id="dashboard">
+      <div>
+        <p class="eyebrow">CUSTOMER RELATIONSHIP MANAGEMENT</p>
+        <h1>Customer dashboard</h1>
+        <p class="muted">Manage your customer relationships in one place.</p>
+      </div>
+      <div class="avatar">CF</div>
+    </header>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span class="stat-icon blue">♙</span>
+        <p>Total customers</p>
+        <h2 id="totalCount">—</h2>
+        <small id="customerSummary">Customer records</small>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon green">@</span>
+        <p>Email contacts</p>
+        <h2 id="emailCount">—</h2>
+        <small>Email addresses</small>
+      </article>
+      <article class="stat-card">
+        <span class="stat-icon purple">✦</span>
+        <p>CRM version</p>
+        <h2 id="version">—</h2>
+        <small>Application release</small>
+      </article>
+    </section>
+
+    <section class="content-card">
+      <div class="section-heading">
+        <div>
+          <h2 id="featureHeading">Add customer</h2>
+          <p class="muted" id="featureDescription">
+            Register a customer in the CRM.
+          </p>
+        </div>
+        <button class="primary-btn" id="addBtn">＋ Add customer</button>
+      </div>
+
+      <div id="customerDirectory">
+        <div class="toolbar">
+          <input id="searchInput" type="search"
+            placeholder="Search name, email or phone...">
+          <span id="resultCount" class="muted">0 customers</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>CUSTOMER</th>
+                <th>EMAIL ADDRESS</th>
+                <th>PHONE</th>
+                <th id="actionsHeading">ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody id="customerTable"></tbody>
+          </table>
+        </div>
+      </div>
+      <p class="footnote">Customer information is managed by your CRM backend.</p>
+    </section>
+
+    <dialog id="customerDialog">
+      <form id="customerForm">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">CUSTOMER DETAILS</p>
+            <h2 id="dialogTitle">Add customer</h2>
+          </div>
+          <button type="button" class="close-btn" id="closeBtn">×</button>
+        </div>
+
+        <label for="name">Full name</label>
+        <input id="name" name="name" maxlength="100" required>
+
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" maxlength="254" required>
+
+        <label for="phone">Phone number</label>
+        <input id="phone" name="phone" type="tel" maxlength="30">
+
+        <p id="formError" class="form-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button type="button" class="secondary-btn" id="cancelBtn">Cancel</button>
+          <button type="submit" class="primary-btn" id="saveBtn">Save customer</button>
+        </div>
+      </form>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="/script.js"></script>
+</body>
+</html>
